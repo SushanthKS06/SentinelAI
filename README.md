@@ -1,27 +1,5 @@
 # SentinelAI - Autonomous AI Reliability Engineer
 
-<p align="center">
-  <img src="docs/assets/sentinelai-logo.svg" width="400" alt="SentinelAI"/>
-</p>
-
-<p align="center">
-  <a href="https://github.com/sentinelai/sentinelai/actions/workflows/ci.yml">
-    <img src="https://github.com/sentinelai/sentinelai/actions/workflows/ci.yml/badge.svg" alt="CI"/>
-  </a>
-  <a href="https://github.com/sentinelai/sentinelai/actions/workflows/cd.yml">
-    <img src="https://github.com/sentinelai/sentinelai/actions/workflows/cd.yml/badge.svg" alt="CD"/>
-  </a>
-  <a href="https://github.com/sentinelai/sentinelai/releases">
-    <img src="https://img.shields.io/github/v/release/sentinelai/sentinelai?include_prereleases" alt="Release"/>
-  </a>
-  <a href="https://discord.gg/sentinelai">
-    <img src="https://img.shields.io/discord/1234567890" alt="Discord"/>
-  </a>
-  <a href="https://opensource.org/licenses/Apache-2.0">
-    <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License"/>
-  </a>
-</p>
-
 ## Overview
 
 SentinelAI is an autonomous AI reliability engineer for distributed cloud-native systems. It acts as an intelligent on-call SRE capable of real-time monitoring, incident detection, anomaly detection, root cause analysis, and automated remediation.
