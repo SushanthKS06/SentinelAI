@@ -14,12 +14,10 @@ RUN pip install uv
 
 # Copy dependency files
 COPY pyproject.toml ./
+COPY backend/sentinelai ./sentinelai
 
 # Install Python dependencies
 RUN uv pip install --system -e .
-
-# Copy application code
-COPY backend/sentinelai ./sentinelai
 
 # Create non-root user
 RUN useradd -m -u 1000 appuser && chown -R appuser:appuser /app

@@ -50,7 +50,7 @@ spec:
     spec:
       containers:
       - name: api-gateway
-        image: sentinelai/api-gateway:latest
+        image: ghcr.io/sentinelai/sentinelai/api-gateway:latest
         ports:
         - containerPort: 8000
         envFrom:
@@ -108,7 +108,7 @@ spec:
     spec:
       containers:
       - name: auth-service
-        image: sentinelai/auth-service:latest
+        image: ghcr.io/sentinelai/sentinelai/api-gateway:latest
         ports:
         - containerPort: 8001
         envFrom:
@@ -153,7 +153,7 @@ spec:
     spec:
       containers:
       - name: incident-intelligence
-        image: sentinelai/incident-intelligence:latest
+        image: ghcr.io/sentinelai/sentinelai/api-gateway:latest
         ports:
         - containerPort: 8002
         envFrom:
@@ -198,7 +198,7 @@ spec:
     spec:
       containers:
       - name: ai-orchestration
-        image: sentinelai/ai-orchestration:latest
+        image: ghcr.io/sentinelai/sentinelai/api-gateway:latest
         ports:
         - containerPort: 8006
         envFrom:
@@ -245,7 +245,7 @@ spec:
     spec:
       containers:
       - name: log-processing
-        image: sentinelai/log-processing:latest
+        image: ghcr.io/sentinelai/sentinelai/api-gateway:latest
         ports:
         - containerPort: 8003
         envFrom:
@@ -288,7 +288,7 @@ spec:
     spec:
       containers:
       - name: metrics-processing
-        image: sentinelai/metrics-processing:latest
+        image: ghcr.io/sentinelai/sentinelai/api-gateway:latest
         ports:
         - containerPort: 8004
         envFrom:
@@ -331,7 +331,7 @@ spec:
     spec:
       containers:
       - name: trace-correlation
-        image: sentinelai/trace-correlation:latest
+        image: ghcr.io/sentinelai/sentinelai/api-gateway:latest
         ports:
         - containerPort: 8005
         envFrom:
