@@ -1,0 +1,19 @@
+apiVersion: v2
+name: sentinelai
+description: Autonomous AI Reliability Engineer for cloud-native systems
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+
+keywords:
+  - sre
+  - reliability
+  - ai
+  - observability
+  - incident-management
+
+maintainers:
+  - name: SentinelAI Team
+    email: team@sentinelai.io
+
+dependencies: []

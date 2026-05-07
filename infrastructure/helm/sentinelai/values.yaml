@@ -1,0 +1,141 @@
+replicaCount: 3
+
+image:
+  repository: ghcr.io/sentinelai
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations:
+  prometheus.io/scrape: "true"
+  prometheus.io/port: "8000"
+  prometheus.io/path: "/metrics"
+
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+  fsGroup: 1000
+
+securityContext:
+  capabilities:
+    drop:
+    - ALL
+  readOnlyRootFilesystem: true
+  allowPrivilegeEscalation: false
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8000
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+  hosts:
+    - host: sentinelai.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: sentinelai-tls
+      hosts:
+        - sentinelai.example.com
+
+resources:
+  limits:
+    cpu: 1000m
+    memory: 1Gi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 3
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 70
+  targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity:
+  podAntiAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 100
+        podAffinityTerm:
+          labelSelector:
+            matchExpressions:
+              - key: app
+                operator: In
+                values:
+                  - sentinelai
+          topologyKey: kubernetes.io/hostname
+
+# Database configuration
+postgres:
+  host: "postgres"
+  port: 5432
+  database: "sentinelai"
+  user: "sentinelai"
+  password: "changeme"
+
+# Redis configuration
+redis:
+  host: "redis"
+  port: 6379
+
+# Kafka configuration
+kafka:
+  bootstrapServers: "kafka:9092"
+
+# OpenTelemetry configuration
+otel:
+  enabled: true
+  endpoint: "http://otel-collector:4317"
+
+# AI configuration
+ai:
+  provider: "vllm"
+  model: "llama-3-8b-instruct"
+  vllm:
+    host: "vllm"
+    port: 8000
+
+# Vector store configuration
+vector:
+  provider: "qdrant"
+  host: "qdrant"
+  port: 6333
+
+# Feature flags
+features:
+  anomalyDetection: true
+  autoRemediation: false
+  aiSuggestions: true
+  alertDeduplication: true
+  incidentTimeline: true
+  deploymentCorrelation: true
+  logIntelligence: true
+  traceAnalysis: true
+
+# Monitoring
+monitoring:
+  prometheus:
+    enabled: true
+    port: 9090
+  grafana:
+    enabled: true
+    port: 3000
