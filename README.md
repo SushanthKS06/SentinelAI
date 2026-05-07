@@ -183,6 +183,13 @@ Access Grafana dashboards:
 - AI metrics: `http://localhost:3000/d/ai-metrics`
 - Anomaly detection: `http://localhost:3000/d/anomalies`
 
+## Documentation
+
+- [Getting Started](docs/getting-started.md) - Quick start guide
+- [Architecture](docs/architecture.md) - System design overview
+- [API Reference](docs/api-reference.md) - API endpoints and usage
+- [Configuration](docs/configuration.md) - Configuration options
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for development guidelines.
